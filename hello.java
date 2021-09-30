@@ -42,10 +42,14 @@ class hello {
         // int a = 1;
         // double b = (int) 1.5;
         // System.out.println(b - a);
-        int[] a = { 2, 4 };
-        int area = LargestRectangleInHistogram.largestRectangleArea(a);
-        System.out.println(area);
-        boolean[] a2 = new boolean[10];
+        // int[] a = { 2, 4 };
+        // int area = LargestRectangleInHistogram.largestRectangleArea(a);
+        // System.out.println(area);
+        // boolean[] a2 = new boolean[10];
+        int[] nums = new int[] { -2, 9, 9, 8, 4 };
+        int k = 5;
+        int res = MaximizeSumOfArrayAfterKNegations.largestSumAfterKNegations(nums, k);
+        System.out.println(res);
     }
 
 }
