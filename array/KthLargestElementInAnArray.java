@@ -31,7 +31,7 @@ public class KthLargestElementInAnArray {
                 right++;
             }
             // skip
-            if (nums[left] >= pivot) {
+            if (nums[left] >= pivot) { // sort desc, 所以 left 需要比povit 大, 右邊需要筆povit 小
                 left++;
             }
             // skip
