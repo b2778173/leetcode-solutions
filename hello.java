@@ -1,18 +1,18 @@
-import array.SpiralMatrixII;
+import stack.RemoveRedundantParenthesis;
 import string.ReverseStrII;
 
-import java.lang.reflect.Array;
-import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.stream.Collector;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class hello {
+    public static String name = "Nothing";
+
     public static void main(String[] args) {
         // int[] nums1 = { 1, 2, 2, 1 };
         // int[] nums2 = { 1, 1 };
@@ -150,6 +150,69 @@ class hello {
         System.out.println(s);
         System.out.println(s1);
         System.out.println(s2);
+
+        for (int i = 10; i > 0; i--) {
+            // if (i >= 3) {
+            // break;
+            // }
+            if (i > 6)
+                break;
+        }
+        // System.out.println(i);
+        int arr[] = {1, 2, 4};
+        for (int e : arr) {
+            int i = 1;
+            while (i <= e) {
+                System.out.println(i++ + ",");
+            }
+        }
+
+        name = "Jim";
+        // begin();
+        Integer x = 1;
+        short y = 6;
+        long z = 7;
+        go(x);
+        go(y);
+        go(z);
+
+        int zzz = 4;
+        do {
+            System.out.println(--zzz);
+        } while (zzz == 0);
+
+//        System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*C)"));
+//        System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C-D))"));
+//        System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C*D))"));
+//        System.out.println(RemoveRedundantParenthesis.removeBrackets("(A*(B+C))"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("1*(2+(3*(4+5)))"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("2 + (3 / -5)"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("x+(y+z)+(t+(v+w))"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("1*(2+3*(4+5))"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("(2*(3+4)*5)/6"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)/7"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)*7"));
+        System.out.println(RemoveRedundantParenthesis.removeBrackets("((2*((2+3)-(4*6))+(8+(7*4))))"));
+    }
+
+    public void begin() {
+        System.out.println(name);
+    }
+
+    public static void go(int x) {
+        System.out.println("int");
+    }
+
+    public static void go(Short x) {
+        System.out.println("Short");
+    }
+
+    public static void go(Integer x) {
+        System.out.println("Integer");
+    }
+
+    public static void go(Long x) {
+        System.out.println("Long");
     }
 
     public static String format(final LocalDateTime dateTime, final String format) {
