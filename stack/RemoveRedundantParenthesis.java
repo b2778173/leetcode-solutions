@@ -4,6 +4,20 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class RemoveRedundantParenthesis {
+    //    test
+    public static void main(String[] args) {
+        System.out.println("RemoveRedundantParenthesis test!");
+        System.out.println(removeBrackets("1*(2+(3*(4+5)))"));
+        System.out.println(removeBrackets("2 + (3 / -5)"));
+        System.out.println(removeBrackets("x+(y+z)+(t+(v+w))"));
+        System.out.println(removeBrackets("1*(2+3*(4+5))"));
+        System.out.println(removeBrackets("(2*(3+4)*5)/6"));
+        System.out.println(removeBrackets("(-5)/7"));
+        System.out.println(removeBrackets("(-5)*7"));
+        System.out.println(removeBrackets("((2*((2+3)-(4*6))+(8+(7*4))))"));
+        System.out.println(removeBrackets("((2*((2+3)*5-(4*6))+(8+(7*4))))"));
+        System.out.println(removeBrackets("((2*((2+3)+5-(4*6))+(8+(7*4))))"));
+    }
     public static String removeBrackets(String Exp) {
 
         char[] s = Exp.toCharArray();
@@ -38,13 +52,13 @@ public class RemoveRedundantParenthesis {
 
         Stack<Integer> st = new Stack<>();
         int[] sign = new int[256]; // operator index mapping array
-        int[] mp = new int[256]; // operator is inside current parenthesis mapping array
+        int[] mp = new int[256]; // operator is inside current parenthesis mapping array, use to check the operator in the parenthesis.
         Arrays.fill(sign, -1);
         char[] operand = {'*', '+', '-', '/'};
 
         for (int p = 0; p < n; p++) {
             for (char x : operand) {
-                mp[x] = 0;
+                mp[x] = 0; // reset
                 if (x == s[p])
                     sign[x] = p; // 紀錄 operand index
             }
@@ -78,11 +92,23 @@ public class RemoveRedundantParenthesis {
                 if (last == -1 && nxt == -1) { // 暫時無碰到任何operator前 all parenthesis are redundant
                     ok = 1;
                 }
+                // parenthesis contain only one number with -+
+                if (mp['-'] == 1 && j - i <= 3) {
+                    ok = 1;
+                } else if (mp['+'] == 1 && j - i <= 2) {
+                    ok = 1;
+                }
                 if (last == '/' ) { // 除後面的parenthesis always valid
                     //
-                } else if (last == '-' && (mp['+'] == 1 || mp['-'] == 1)) { // - 後面之parenthesis is valid
+                } else if (nxt == '/' && (mp['-'] == 1 || mp['+'] == 1)) { // 分子parenthesis 含有+-
                     //
-                } else if (mp['-'] == 0 && mp['+'] == 0) { // -,+ are outside parenthesis , is redundant
+                } else if (last == '*') {
+                    if (s[i - 1] == '(' && (nxt == '-' || nxt == '+')) { // last operator is * and next is -,+ ,previous char is (, parenthesis is redundant
+                        ok = 1;
+                    }
+                } else if (last == '-' && (mp['+'] == 1 || mp['-'] == 1)) { // - 後面之parenthesis含有+- , parenthesis is valid
+                    //
+                } else if (mp['-'] == 0 && mp['+'] == 0) { // -,+ are outside parenthesis , is redundant, /* dont need parenthesis to keep priority.
                     ok = 1;
                 } else {
                     if ((last == -1 || last == '+' || last == '-') && (nxt == -1 || nxt == '+' || nxt == '-'))
@@ -90,8 +116,9 @@ public class RemoveRedundantParenthesis {
                         // 為同一個等級,
                         // 不需要parenthesis
                         ok = 1;
+
                 }
-                // If the pair is reduntant
+                // If the pair is redundant
                 if (ok == 1) {
                     ans[i] = 0;
                     ans[j] = 0;
@@ -108,5 +135,4 @@ public class RemoveRedundantParenthesis {
         }
         return res.toString();
     }
-
 }
