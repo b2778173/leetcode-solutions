@@ -17,6 +17,10 @@ public class RemoveRedundantParenthesis {
         System.out.println(removeBrackets("((2*((2+3)-(4*6))+(8+(7*4))))"));
         System.out.println(removeBrackets("((2*((2+3)*5-(4*6))+(8+(7*4))))"));
         System.out.println(removeBrackets("((2*((2+3)+5-(4*6))+(8+(7*4))))"));
+
+        System.out.println(removeBrackets("2*(3/5)"));
+        System.out.println(removeBrackets("(2*(3+4)*5)/6"));
+        System.out.println(removeBrackets("1+(-1)"));
     }
     public static String removeBrackets(String Exp) {
 
@@ -92,18 +96,29 @@ public class RemoveRedundantParenthesis {
                 if (last == -1 && nxt == -1) { // 暫時無碰到任何operator前 all parenthesis are redundant
                     ok = 1;
                 }
-                // parenthesis contain only one number with -+
-                if (mp['-'] == 1 && j - i <= 3) {
-                    ok = 1;
-                } else if (mp['+'] == 1 && j - i <= 2) {
-                    ok = 1;
+
+                if(last == -1){ // '(' 開始
+                    // parenthesis contain only one number with -+
+                    if (mp['-'] == 1 && j - i <= 3) {
+                        ok = 1;
+                    } else if (mp['+'] == 1 && j - i <= 2) {
+                        ok = 1;
+                    }
                 }
+
                 if (last == '/' ) { // 除後面的parenthesis always valid
                     //
-                } else if (nxt == '/' && (mp['-'] == 1 || mp['+'] == 1)) { // 分子parenthesis 含有+-
-                    //
+                } else if (nxt == '/' ) {
+                    if((mp['-'] == 1 || mp['+'] == 1)){ // 分子parenthesis 含有+-
+                        //
+                        if(mp['*'] == 1 && last == -1){ // and the most outer parenthesis
+                            ok=1;
+                        }
+                    }
                 } else if (last == '*') {
                     if (s[i - 1] == '(' && (nxt == '-' || nxt == '+')) { // last operator is * and next is -,+ ,previous char is (, parenthesis is redundant
+                        ok = 1;
+                    }else if(mp['/'] == 1){ // last operator * and / is in the parenthesis
                         ok = 1;
                     }
                 } else if (last == '-' && (mp['+'] == 1 || mp['-'] == 1)) { // - 後面之parenthesis含有+- , parenthesis is valid
@@ -111,12 +126,18 @@ public class RemoveRedundantParenthesis {
                 } else if (mp['-'] == 0 && mp['+'] == 0) { // -,+ are outside parenthesis , is redundant, /* dont need parenthesis to keep priority.
                     ok = 1;
                 } else {
-                    if ((last == -1 || last == '+' || last == '-') && (nxt == -1 || nxt == '+' || nxt == '-'))
-                        // -, +
-                        // 為同一個等級,
-                        // 不需要parenthesis
-                        ok = 1;
-
+                    if ((last == -1 || last == '+' || last == '-') && (nxt == -1 || nxt == '+' || nxt == '-')) {
+                        if (mp['-'] == 1 && j - i <= 3) {  // parenthesis contain only one number with -
+                            //
+                        } else if (mp['+'] == 1 && j - i <= 3) {  // parenthesis contain only one number with +
+                            //
+                        } else {
+                            // -, +
+                            // 為同一個等級,
+                            // 不需要parenthesis
+                            ok = 1;
+                        }
+                    }
                 }
                 // If the pair is redundant
                 if (ok == 1) {
