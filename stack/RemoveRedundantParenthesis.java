@@ -21,6 +21,9 @@ public class RemoveRedundantParenthesis {
         System.out.println(removeBrackets("2*(3/5)"));
         System.out.println(removeBrackets("(2*(3+4)*5)/6"));
         System.out.println(removeBrackets("1+(-1)"));
+
+        System.out.println(removeBrackets("(2*3)/5"));
+        System.out.println(removeBrackets("(2/3)/5"));
     }
     public static String removeBrackets(String Exp) {
 
@@ -111,9 +114,11 @@ public class RemoveRedundantParenthesis {
                 } else if (nxt == '/' ) {
                     if((mp['-'] == 1 || mp['+'] == 1)){ // 分子parenthesis 含有+-
                         //
-                        if(mp['*'] == 1 && last == -1){ // and the most outer parenthesis
+                        if(mp['*'] == 1 && last == -1){ // contain * and the most outer parenthesis
                             ok=1;
                         }
+                    } else { // 分子只有 /, *, parenthesis is redundant
+                        ok = 1;
                     }
                 } else if (last == '*') {
                     if (s[i - 1] == '(' && (nxt == '-' || nxt == '+')) { // last operator is * and next is -,+ ,previous char is (, parenthesis is redundant
