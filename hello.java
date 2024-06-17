@@ -159,7 +159,7 @@ class hello {
                 break;
         }
         // System.out.println(i);
-        int arr[] = {1, 2, 4};
+        int arr[] = { 1, 2, 4 };
         for (int e : arr) {
             int i = 1;
             while (i <= e) {
@@ -181,10 +181,10 @@ class hello {
             System.out.println(--zzz);
         } while (zzz == 0);
 
-//        System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*C)"));
-//        System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C-D))"));
-//        System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C*D))"));
-//        System.out.println(RemoveRedundantParenthesis.removeBrackets("(A*(B+C))"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*C)"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C-D))"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C*D))"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("(A*(B+C))"));
         System.out.println(RemoveRedundantParenthesis.removeBrackets("1*(2+(3*(4+5)))"));
         System.out.println(RemoveRedundantParenthesis.removeBrackets("2 + (3 / -5)"));
         System.out.println(RemoveRedundantParenthesis.removeBrackets("x+(y+z)+(t+(v+w))"));
@@ -193,6 +193,10 @@ class hello {
         System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)/7"));
         System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)*7"));
         System.out.println(RemoveRedundantParenthesis.removeBrackets("((2*((2+3)-(4*6))+(8+(7*4))))"));
+        
+        
+        
+        Permutations.permute("ABC");
     }
 
     public void begin() {
