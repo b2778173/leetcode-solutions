@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import array.MissingNumber;
+
 class hello {
     public static String name = "Nothing";
 
@@ -193,10 +195,11 @@ class hello {
         System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)/7"));
         System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)*7"));
         System.out.println(RemoveRedundantParenthesis.removeBrackets("((2*((2+3)-(4*6))+(8+(7*4))))"));
-        
-        
-        
+
         Permutations.permute("ABC");
+
+        System.out.println(MissingNumber.missingNumber(new int[] { 3, 0, 1 }));
+
     }
 
     public void begin() {
@@ -244,4 +247,5 @@ class hello {
             return this.sourceUserName;
         }
     }
+
 }
