@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import array.FindPariGreaterTthan24;
 import array.MissingNumber;
 
 class hello {
@@ -187,19 +188,21 @@ class hello {
         // System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C-D))"));
         // System.out.println(RemoveRedundantParenthesis.removeBrackets("((A+B)*(C*D))"));
         // System.out.println(RemoveRedundantParenthesis.removeBrackets("(A*(B+C))"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("1*(2+(3*(4+5)))"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("2 + (3 / -5)"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("x+(y+z)+(t+(v+w))"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("1*(2+3*(4+5))"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("(2*(3+4)*5)/6"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)/7"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)*7"));
-        System.out.println(RemoveRedundantParenthesis.removeBrackets("((2*((2+3)-(4*6))+(8+(7*4))))"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("1*(2+(3*(4+5)))"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("2 + (3 /
+        // -5)"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("x+(y+z)+(t+(v+w))"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("1*(2+3*(4+5))"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("(2*(3+4)*5)/6"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)/7"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("(-5)*7"));
+        // System.out.println(RemoveRedundantParenthesis.removeBrackets("((2*((2+3)-(4*6))+(8+(7*4))))"));
 
-        Permutations.permute("ABC");
+        // Permutations.permute("ABC");
 
-        System.out.println(MissingNumber.missingNumber(new int[] { 3, 0, 1 }));
+        // System.out.println(MissingNumber.missingNumber(new int[] { 3, 0, 1 }));
 
+        System.out.println("FindPariGreaterTthan24.solution: " + FindPariGreaterTthan24.solution(new int[] { 11, 15, 2, 4, 8 }, 24));
     }
 
     public void begin() {
